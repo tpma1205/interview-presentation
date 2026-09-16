@@ -131,8 +131,8 @@
             <p class="org-map">流程：申報</p>
           </div>
           <div class="org-fn">
-            <h3>申報審查</h3>
-            <p>一審：檢核申報資料，退件或送政府二審。</p>
+            <h3>一審</h3>
+            <p>檢核申報資料，退件補正或送政府二審。</p>
             <p class="org-map">流程：一審</p>
           </div>
           <div class="org-fn">
@@ -218,7 +218,7 @@
   <section class="slide" id="2-1" data-title="逾期繳費的難點及解決方案">
     <aside class="rail">
       <p class="rail-code">2-1</p>
-      <p class="rail-chapter">分析篇・案例一</p>
+      <p class="rail-chapter">分析篇 案例一</p>
       <h2 class="rail-title">逾期繳費的難點<br />及解決方案</h2>
       <p class="rail-figure rail-figure-pair"><span class="num">3%</span><span class="num-arrow">→</span><span class="num num-mint">0.2%</span></p>
       <dl class="rail-dl">
@@ -242,8 +242,8 @@
           <button type="button" class="toggle-btn is-active" data-phase="before">改善前</button>
           <button type="button" class="toggle-btn" data-phase="after">改善後</button>
         </div>
-        <div class="chart-wrap chart-wrap-sm">
-          <canvas id="chart-after" aria-label="繳費時點分布（改善前後切換）" role="img"></canvas>
+        <div class="chart-wrap">
+          <canvas id="chart-timing" aria-label="繳費時點分布（改善前後切換）" role="img"></canvas>
         </div>
         <p class="caption">示意數據。分布形狀與比例依實際觀察：雙峰在第 1 與第 14 天，逾期 3% → 0.2%。</p>
       </div>
@@ -261,7 +261,9 @@
             <tr><td>NT-2609-0425</td><td>09/05</td><td>09/19</td><td class="due">3 天</td></tr>
             <tr><td>NT-2609-0431</td><td>09/08</td><td>09/22</td><td>6 天</td></tr>
             <tr><td>NT-2609-0440</td><td>09/10</td><td>09/24</td><td>8 天</td></tr>
+            <tr><td>NT-2609-0443</td><td>09/12</td><td>09/26</td><td>10 天</td></tr>
             <tr><td>NT-2609-0447</td><td>09/15</td><td>09/29</td><td>13 天</td></tr>
+            <tr><td>NT-2609-0451</td><td>09/16</td><td>09/30</td><td>14 天</td></tr>
           </tbody>
         </table>
       </div>
@@ -272,12 +274,12 @@
   <section class="slide" id="2-2" data-title="逾期申報宣導對象問題">
     <aside class="rail">
       <p class="rail-code">2-2</p>
-      <p class="rail-chapter">分析篇・案例二</p>
+      <p class="rail-chapter">分析篇 案例二</p>
       <h2 class="rail-title">逾期申報<br />宣導對象問題</h2>
       <dl class="rail-dl">
         <div>
           <dt>逾期申報的定義</dt>
-          <dd>營建工程應在規定期限內於平台完成空污費申報；超過期限才申報的案件，即為逾期申報。</dd>
+          <dd>營建工程應於開工前完成空污費申報；超過期限才申報的案件，即為逾期申報。</dd>
         </div>
         <div>
           <dt>遇到的問題</dt>
@@ -318,7 +320,7 @@
               <span class="formula-den">v + m</span>
             </span>
           </p>
-          <p class="tool-vars"><b>v</b> 申報件數　<b>r</b> 逾期率　<b>m</b> 信心常數　<b>c</b> 全體平均逾期率</p>
+          <p class="tool-vars"><b>w</b> 貝氏平均逾期率　<b>v</b> 申報件數　<b>r</b> 逾期率　<b>m</b> 信心常數　<b>c</b> 全體平均逾期率</p>
           <p class="tool-note">m 決定「多少件才算可信」。範例用 m = 20。</p>
           <a class="preview" href="https://tpma1205.github.io/NTPC_SimBayes/" target="_blank" rel="noopener">
             <img src="assets/simbayes-preview.png" alt="貝氏平均法模擬工具畫面" width="1280" height="800" />

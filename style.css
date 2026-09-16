@@ -8,7 +8,6 @@
   --line: #d6dde0;
   --teal: #3f8c92;
   --teal-deep: #2f6e73;
-  --teal-tint: #e3f0f1;
   --mint: #8cffd2;
   --rust: #c4573a;
   --rust-tint: #f7e6e1;
@@ -194,13 +193,13 @@ button { font: inherit; color: inherit; }
   padding: 0 4px;
 }
 
-.rail-figure-pair .num { font-size: 52px; }
-.rail-figure-pair .num-arrow { font-size: 26px; }
-
 .rail-figure .num-arrow {
   font-size: 32px;
   color: var(--slate);
 }
+
+.rail-figure-pair .num { font-size: 52px; }
+.rail-figure-pair .num-arrow { font-size: 26px; }
 
 .rail-dl {
   display: flex;
@@ -219,12 +218,6 @@ button { font: inherit; color: inherit; }
 .rail-dl dd {
   font-size: 15px;
   line-height: 1.7;
-}
-
-.rail-figure-label {
-  font-size: 15px;
-  color: var(--slate);
-  width: 100%;
 }
 
 .stage {
@@ -427,10 +420,8 @@ button { font: inherit; color: inherit; }
 /* ---------- charts ---------- */
 .chart-wrap {
   position: relative;
-  height: min(60vh, 520px);
+  height: min(52vh, 440px);
 }
-
-.chart-wrap-sm { height: min(52vh, 440px); }
 
 .toggle {
   display: inline-flex;
@@ -451,7 +442,7 @@ button { font: inherit; color: inherit; }
 .toggle-btn + .toggle-btn { border-left: 1.5px solid var(--ink); }
 .toggle-btn.is-active { background: var(--ink); color: #fff; }
 
-/* ---------- 2-2 steps + sheet ---------- */
+/* ---------- 2-1 steps + sheet ---------- */
 .steps-list {
   list-style: none;
   padding: 0;
@@ -569,7 +560,7 @@ button { font: inherit; color: inherit; }
 .tool-vars b { font-family: var(--font-latin); font-style: italic; color: var(--teal-deep); }
 .tool-note { font-size: 14px; }
 
-/* ---------- 2-4 methods ---------- */
+/* ---------- 2-2 methods ---------- */
 .methods {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -617,7 +608,7 @@ button { font: inherit; color: inherit; }
 .method-flaw { font-size: 14px; color: var(--slate); line-height: 1.6; }
 .method.is-chosen .method-flaw { color: var(--ink); }
 
-/* ---------- 2-5 formula ---------- */
+/* ---------- 2-2 formula + tool ---------- */
 .formula {
   display: flex;
   align-items: center;
@@ -671,7 +662,7 @@ button { font: inherit; color: inherit; }
 /* ---------- responsive ---------- */
 @media (max-width: 1180px) {
   :root { --rail-w: 280px; --gutter: 32px; }
-  .rail-figure .num { font-size: 56px; }
+  .rail-figure .num, .rail-figure-pair .num { font-size: 48px; }
   .roles { grid-template-columns: repeat(2, 1fr); }
   .org-branches { grid-template-columns: repeat(2, 1fr); }
   .org-branches::after { display: none; }
@@ -697,10 +688,10 @@ button { font: inherit; color: inherit; }
   .rail { border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 20px; }
   .rail-title { font-size: 24px; }
   .rail-lead { font-size: 16px; }
-  .rail-figure .num { font-size: 48px; }
+  .rail-figure .num, .rail-figure-pair .num { font-size: 44px; }
 
   .stage-split { flex-direction: column; gap: 24px; }
-  .chart-wrap, .chart-wrap-sm { height: 320px; }
+  .chart-wrap { height: 320px; }
 
   .roles { grid-template-columns: 1fr; }
   .role { padding: 18px 16px; }

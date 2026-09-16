@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   bayesianAverage,
+  lateRate,
   overallLateRate,
   rankByTotalLate,
   rankByMeanRate,
@@ -21,10 +22,21 @@ test('bayesianAverage: m = 0 → raw rate', () => {
   assert.equal(bayesianAverage({ v: 5, r: 0.4, m: 0, c: 0.15 }), 0.4);
 });
 
-test('bayesianAverage: formula matches hand calculation', () => {
-  // (60·0.4 + 20·0.155) / 80 = 27.1 / 80
-  const w = bayesianAverage({ v: 60, r: 0.4, m: 20, c: 0.155 });
-  assert.ok(Math.abs(w - 27.1 / 80) < 1e-12);
+test('bayesianAverage: all five contractors match hand calculation', () => {
+  const c = overallLateRate(contractors); // 77 / 497
+  assert.ok(Math.abs(c - 77 / 497) < 1e-12);
+  // w = (late + m·c) / (filings + m)，逐家手算
+  const expected = {
+    '業者 A': (30 + 20 * c) / 320,
+    '業者 B': (2 + 20 * c) / 22,
+    '業者 C': (24 + 20 * c) / 80,
+    '業者 D': (18 + 20 * c) / 140,
+    '業者 E': (3 + 20 * c) / 35,
+  };
+  for (const x of contractors) {
+    const w = bayesianAverage({ v: x.filings, r: lateRate(x), m: CONFIDENCE_M, c });
+    assert.ok(Math.abs(w - expected[x.name]) < 1e-12, x.name);
+  }
 });
 
 test('five contractors: each ranking method puts a different contractor first', () => {

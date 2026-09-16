@@ -6,6 +6,11 @@ export function bayesianAverage({ v, r, m, c }) {
   return (v * r + m * c) / (v + m);
 }
 
+/** 單一業者的逾期率 r */
+export function lateRate({ filings, late }) {
+  return filings === 0 ? 0 : late / filings;
+}
+
 /** 全體平均逾期率 c：所有申報中逾期的比例 */
 export function overallLateRate(rows) {
   const filings = rows.reduce((s, x) => s + x.filings, 0);
@@ -23,7 +28,7 @@ export function rankByTotalLate(rows) {
 /** 方法二：算術平均逾期率 */
 export function rankByMeanRate(rows) {
   return rows
-    .map((x) => ({ ...x, score: x.filings === 0 ? 0 : x.late / x.filings }))
+    .map((x) => ({ ...x, score: lateRate(x) }))
     .sort(desc('score'));
 }
 
@@ -32,7 +37,7 @@ export function rankByBayes(rows, m, c) {
   return rows
     .map((x) => ({
       ...x,
-      score: bayesianAverage({ v: x.filings, r: x.filings === 0 ? 0 : x.late / x.filings, m, c }),
+      score: bayesianAverage({ v: x.filings, r: lateRate(x), m, c }),
     }))
     .sort(desc('score'));
 }

@@ -1,4 +1,4 @@
-// 2-4 方法演進用的固定示範業者（虛構）。
+// 2-2 方法對照用的固定示範業者（虛構）。
 export const CONFIDENCE_M = 20;
 
 export const contractors = [

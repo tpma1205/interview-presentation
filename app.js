@@ -1,5 +1,6 @@
 import {
   overallLateRate,
+  overdueShare,
   rankByTotalLate,
   rankByMeanRate,
   rankByBayes,
@@ -53,7 +54,7 @@ const initial = slides.findIndex((s) => `#${s.id}` === location.hash);
 if (initial > 0) slides[initial].scrollIntoView({ behavior: 'auto' });
 requestAnimationFrame(() => slides.forEach((s) => observer.observe(s)));
 
-/* ---------- payment timing chart ---------- */
+/* ---------- 2-1 payment timing chart ---------- */
 const labels = before.map((_, i) => i + 1);
 
 function barColors(dist) {
@@ -83,7 +84,7 @@ const deadlinePlugin = {
     ctx.fillText('繳費期限 第 14 天', xAfter - 8, chartArea.top + 16);
     ctx.textAlign = 'left';
     ctx.fillStyle = css('--rust');
-    const overdue = chart.data.datasets[0].data.slice(DEADLINE_DAY).reduce((s, x) => s + x, 0);
+    const overdue = overdueShare(chart.data.datasets[0].data, DEADLINE_DAY);
     ctx.fillText('逾期', xAfter + 8, chartArea.top + 16);
     ctx.font = `700 28px ${css('--font-latin')}`;
     ctx.fillText(`${Math.round(overdue * 10) / 10}%`, xAfter + 8, chartArea.top + 52);
@@ -91,16 +92,16 @@ const deadlinePlugin = {
   },
 };
 
-function makeChart(canvasId, dist) {
-  const ctx = document.getElementById(canvasId);
+function createTimingChart() {
+  const ctx = document.getElementById('chart-timing');
   if (!ctx || !window.Chart) return null;
   return new Chart(ctx, {
     type: 'bar',
     data: {
       labels,
       datasets: [{
-        data: dist,
-        backgroundColor: barColors(dist),
+        data: before,
+        backgroundColor: barColors(before),
         borderRadius: 2,
         barPercentage: 0.8,
         categoryPercentage: 0.9,
@@ -110,7 +111,7 @@ function makeChart(canvasId, dist) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: reducedMotion ? false : { duration: 700 },
+      animation: false,
       plugins: {
         legend: { display: false },
         tooltip: {
@@ -139,7 +140,7 @@ function makeChart(canvasId, dist) {
   });
 }
 
-const toggleChart = makeChart('chart-after', before);
+const toggleChart = createTimingChart();
 
 document.querySelectorAll('.toggle-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -147,11 +148,12 @@ document.querySelectorAll('.toggle-btn').forEach((btn) => {
     if (!toggleChart) return;
     const dist = btn.dataset.phase === 'after' ? after : before;
     toggleChart.data.datasets[0].data = dist;
+    toggleChart.options.animation = reducedMotion ? false : { duration: 700 };
     toggleChart.update();
   });
 });
 
-/* ---------- 2-4 method comparison ---------- */
+/* ---------- 2-2 method comparison ---------- */
 const pct = (x) => `${(x * 100).toFixed(1)}%`;
 const c = overallLateRate(contractors);
 

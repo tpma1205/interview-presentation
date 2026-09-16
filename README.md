@@ -25,8 +25,11 @@ style.css         樣式（CSS 變數定義色系與字體）
 app.js            導覽、圖表、2-2 排名渲染
 src/analysis.js   純函數：貝氏平均、三種排名、分布驗證
 data/             示意數據（繳費時點分布、示範業者）
+assets/           模擬工具預覽圖
 test/             node:test 測試
+package.json      僅用於 npm test（無相依套件）
 docs/SPEC.md      需求規格
+docs/DESIGN.md    設計筆記
 CONTEXT.md        領域詞彙
 ```
 
