@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>陳映安 Alan ｜ 數據產品經理 面試簡報</title>
+  <meta name="description" content="新北市營建工程空污費徵收專案，與兩個數據分析案例。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%233f8c92%27/%3E%3Crect x=%277%27 y=%2717%27 width=%274%27 height=%278%27 fill=%27%23fff%27/%3E%3Crect x=%2714%27 y=%2711%27 width=%274%27 height=%2714%27 fill=%27%23fff%27/%3E%3Crect x=%2721%27 y=%277%27 width=%274%27 height=%2718%27 fill=%27%23fff%27/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav-identity" href="#1-1">陳映安 Alan ｜ 數據產品經理 面試簡報</a>
+  <nav class="nav-chapters" aria-label="章節">
+    <div class="nav-chapter">
+      <span class="nav-chapter-name">專案篇</span>
+      <a href="#1-1" data-nav="1-1">1-1</a>
+      <a href="#1-2" data-nav="1-2">1-2</a>
+      <a href="#1-3" data-nav="1-3">1-3</a>
+    </div>
+    <div class="nav-chapter">
+      <span class="nav-chapter-name">分析篇</span>
+      <a href="#2-1" data-nav="2-1">2-1</a>
+      <a href="#2-2" data-nav="2-2">2-2</a>
+      <a href="#2-3" data-nav="2-3">2-3</a>
+      <a href="#2-4" data-nav="2-4">2-4</a>
+      <a href="#2-5" data-nav="2-5">2-5</a>
+      <a href="#2-6" data-nav="2-6">2-6</a>
+    </div>
+  </nav>
+  <div class="nav-progress" id="nav-progress" aria-live="polite">1 / 9</div>
+</header>
+
+<main id="deck">
+
+  <!-- 1-1 -->
+  <section class="slide" id="1-1" data-title="專案與平台">
+    <aside class="rail">
+      <p class="rail-code">1-1</p>
+      <p class="rail-chapter">專案篇</p>
+      <h2 class="rail-title">新北市營建工程<br />空污費徵收</h2>
+      <p class="rail-lead">新北市 29 個行政區內的營建工程，都要繳空氣污染防制費。前公司建置線上申報平台，業者在上面申報，政府在上面審查、開單、收費、對帳。</p>
+      <p class="rail-note">四條泳道：誰做哪一步。</p>
+    </aside>
+    <div class="stage">
+      <div class="scroll-x">
+        <svg class="swimlane" viewBox="0 0 1070 480" role="img" aria-labelledby="swim-title">
+          <title id="swim-title">申報平台流程泳道圖</title>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" class="arrow-head" />
+            </marker>
+          </defs>
+          <g class="lanes">
+            <rect x="0" y="0" width="1070" height="120" class="lane lane-alt" />
+            <rect x="0" y="120" width="1070" height="120" class="lane" />
+            <rect x="0" y="240" width="1070" height="120" class="lane lane-alt" />
+            <rect x="0" y="360" width="1070" height="120" class="lane" />
+            <line x1="100" y1="0" x2="100" y2="480" class="lane-divider" />
+            <text x="20" y="66" class="lane-label">業者</text>
+            <text x="20" y="186" class="lane-label lane-label-team">執行團隊</text>
+            <text x="20" y="306" class="lane-label">政府</text>
+            <text x="20" y="426" class="lane-label">系統</text>
+          </g>
+          <g class="edges" fill="none" marker-end="url(#arrow)">
+            <path d="M220 60 H228 V180 H236" />
+            <path d="M340 180 H348 V300 H356" />
+            <path d="M460 300 H476" />
+            <path d="M580 300 H588 V420 H596" />
+            <path d="M700 420 H704 V60 H708" />
+            <path d="M828 60 H832 V420 H836" />
+            <path d="M940 420 H956" />
+          </g>
+          <g class="steps">
+            <g transform="translate(116 36)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">申報</text></g>
+            <g transform="translate(236 156)"><rect width="104" height="48" rx="6" class="step step-team" /><text x="52" y="30" class="step-text">一審</text></g>
+            <g transform="translate(356 276)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">二審</text></g>
+            <g transform="translate(476 276)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">三審</text></g>
+            <g transform="translate(596 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">開立繳款單</text></g>
+            <g transform="translate(708 36)"><rect width="120" height="48" rx="6" class="step" /><text x="60" y="21" class="step-text">繳費</text><text x="60" y="39" class="step-sub">下載繳款單 / 行動支付</text></g>
+            <g transform="translate(836 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">台灣銀行對帳</text></g>
+            <g transform="translate(956 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">開放繳費憑證</text></g>
+          </g>
+        </svg>
+      </div>
+      <p class="legend"><span class="legend-team">實心</span>＝執行團隊　<span class="legend-sys">虛線</span>＝系統自動　實線＝人工</p>
+    </div>
+  </section>
+
+  <!-- 1-2 -->
+  <section class="slide" id="1-2" data-title="團隊組織">
+    <aside class="rail">
+      <p class="rail-code">1-2</p>
+      <p class="rail-chapter">專案篇</p>
+      <h2 class="rail-title">團隊組織</h2>
+      <p class="rail-lead">我帶領 4 位行政客服人員。四項職能由四人共同分攤，不各自專責——每個人都能接電話、審案、催繳。</p>
+    </aside>
+    <div class="stage">
+      <div class="team">
+        <div class="team-manage">
+          <span class="team-manage-label">我的管理職責</span>
+          <span>訂定年度執行方向</span>
+          <span>制定 SOP</span>
+          <span>制定 KPI</span>
+        </div>
+        <div class="team-grid">
+          <div class="team-fn">
+            <h3>申報諮詢</h3>
+            <p>業者申報前後的電話與現場諮詢。</p>
+            <p class="team-map">對應流程：申報</p>
+          </div>
+          <div class="team-fn">
+            <h3>一審</h3>
+            <p>申報資料的第一輪審查，補件退件。</p>
+            <p class="team-map">對應流程：一審</p>
+          </div>
+          <div class="team-core">
+            <p class="team-core-name">執行團隊</p>
+            <p class="team-core-size"><span class="num">1</span> + <span class="num">4</span></p>
+            <p class="team-core-note">我 + 4 位行政客服<br />四項職能共同分攤</p>
+          </div>
+          <div class="team-fn">
+            <h3>繳費催帳</h3>
+            <p>即將到期與逾期案件的提醒與追蹤。</p>
+            <p class="team-map">對應流程：繳費</p>
+          </div>
+          <div class="team-fn">
+            <h3>日常行政</h3>
+            <p>公文、報表、會議與資料整理。</p>
+            <p class="team-map">對應流程：全程</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1-3 -->
+  <section class="slide" id="1-3" data-title="我的角色">
+    <aside class="rail">
+      <p class="rail-code">1-3</p>
+      <p class="rail-chapter">專案篇</p>
+      <h2 class="rail-title">我的角色</h2>
+      <p class="rail-lead">從評選得標到驗收，從使用者需求到資料庫，整個專案週期都經過我手上。</p>
+    </aside>
+    <div class="stage">
+      <div class="roles">
+        <div class="role">
+          <h3>專案管理</h3>
+          <p>參與評選得標；執行合約項目並在期程內完成；撰寫報告書、參與審查會議；完成驗收。</p>
+        </div>
+        <div class="role">
+          <h3>維運申報平台</h3>
+          <p>與業者、政府討論需求；與資訊部門討論開發內容與排程。</p>
+        </div>
+        <div class="role">
+          <h3>資料庫管理</h3>
+          <p>資料清洗、補遺、正規化；數據分析、提供決策依據；報表製作、議員索資。</p>
+        </div>
+        <div class="role">
+          <h3>法律諮詢</h3>
+          <p>遇到特殊案例時，整理相關法規、解釋函、判決書，協助政府單位判斷。</p>
+        </div>
+        <div class="role">
+          <h3>宣導會議</h3>
+          <p>每年辦理 3 場、每場約 200 人；擔任授課講者。</p>
+        </div>
+        <div class="role">
+          <h3>管理團隊</h3>
+          <p>訂定年度執行方向；制定 SOP；制定 KPI。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-1 -->
+  <section class="slide" id="2-1" data-title="逾期繳費：問題與數據">
+    <aside class="rail">
+      <p class="rail-code">2-1</p>
+      <p class="rail-chapter">分析篇・案例一</p>
+      <h2 class="rail-title">逾期繳費<br />問題與數據</h2>
+      <p class="rail-figure"><span class="num">3%</span><span class="rail-figure-label">案件逾期繳費</span></p>
+      <p class="rail-lead">繳款單開立後 14 天內要繳。把繳費日對開單日作圖，出現兩個峰：第 1 天，和第 14 天。</p>
+      <p class="rail-note">人只有兩種：當天做完的，和拖到最後一天的。</p>
+    </aside>
+    <div class="stage">
+      <div class="chart-wrap">
+        <canvas id="chart-before" aria-label="繳費時點分布（改善前）" role="img"></canvas>
+      </div>
+      <p class="caption">示意數據。分布形狀與比例依實際觀察：雙峰在第 1 與第 14 天，逾期 3%。</p>
+    </div>
+  </section>
+
+  <!-- 2-2 -->
+  <section class="slide" id="2-2" data-title="逾期繳費：解法與成果">
+    <aside class="rail">
+      <p class="rail-code">2-2</p>
+      <p class="rail-chapter">分析篇・案例一</p>
+      <h2 class="rail-title">逾期繳費<br />解法與成果</h2>
+      <p class="rail-figure rail-figure-pair"><span class="num">3%</span><span class="num-arrow">→</span><span class="num num-mint">0.2%</span></p>
+      <p class="rail-lead">拖到最後一天的人，只差一通電話。把「還剩 3 天」的案件每天挑出來，行政人員打電話提醒。</p>
+    </aside>
+    <div class="stage stage-split">
+      <div class="stage-left">
+        <div class="toggle" role="group" aria-label="改善前後切換">
+          <button type="button" class="toggle-btn is-active" data-phase="before">改善前</button>
+          <button type="button" class="toggle-btn" data-phase="after">改善後</button>
+        </div>
+        <div class="chart-wrap chart-wrap-sm">
+          <canvas id="chart-after" aria-label="繳費時點分布（改善前後切換）" role="img"></canvas>
+        </div>
+      </div>
+      <div class="stage-right">
+        <ol class="steps-list">
+          <li><span class="steps-n">1</span><div><strong>每日匯出</strong><span>每天從資料庫匯出未繳案件到 Google Sheet</span></div></li>
+          <li><span class="steps-n">2</span><div><strong>條件格式高亮</strong><span>剩餘 3 天以內的列自動變色</span></div></li>
+          <li><span class="steps-n">3</span><div><strong>電話提醒</strong><span>行政人員依名單逐一聯繫</span></div></li>
+        </ol>
+        <table class="sheet" aria-label="每日未繳案件表（示意）">
+          <thead><tr><th>案件</th><th>開單日</th><th>繳費期限</th><th>剩餘</th></tr></thead>
+          <tbody>
+            <tr><td>NT-2609-0412</td><td>09/03</td><td>09/17</td><td class="due">1 天</td></tr>
+            <tr><td>NT-2609-0418</td><td>09/04</td><td>09/18</td><td class="due">2 天</td></tr>
+            <tr><td>NT-2609-0425</td><td>09/05</td><td>09/19</td><td class="due">3 天</td></tr>
+            <tr><td>NT-2609-0431</td><td>09/08</td><td>09/22</td><td>6 天</td></tr>
+            <tr><td>NT-2609-0440</td><td>09/10</td><td>09/24</td><td>8 天</td></tr>
+            <tr><td>NT-2609-0447</td><td>09/15</td><td>09/29</td><td>13 天</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-3 -->
+  <section class="slide" id="2-3" data-title="逾期申報：問題">
+    <aside class="rail">
+      <p class="rail-code">2-3</p>
+      <p class="rail-chapter">分析篇・案例二</p>
+      <h2 class="rail-title">逾期申報宣導<br />先定義「經常」</h2>
+      <p class="rail-lead">每年的宣導會，這一次要鎖定「經常逾期申報」的業者。名單怎麼排，決定誰會被請來、宣導資源花在誰身上。</p>
+    </aside>
+    <div class="stage">
+      <div class="question">
+        <p class="question-big">「經常」<span>是幾次？還是幾成？</span></p>
+        <div class="question-cols">
+          <div>
+            <h3>如果算次數</h3>
+            <p>申報幾百件的大戶，逾期次數一定最多——但他的逾期比例可能很低。</p>
+          </div>
+          <div>
+            <h3>如果算比例</h3>
+            <p>只申報過 2 件、2 件都逾期的業者是 100%——但 2 件說明不了什麼。</p>
+          </div>
+          <div>
+            <h3>真正要找的</h3>
+            <p>逾期比例高、而且申報量足以證明這不是偶然的業者。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-4 -->
+  <section class="slide" id="2-4" data-title="逾期申報：方法演進">
+    <aside class="rail">
+      <p class="rail-code">2-4</p>
+      <p class="rail-chapter">分析篇・案例二</p>
+      <h2 class="rail-title">三種定義<br />三個第一名</h2>
+      <p class="rail-lead">同一組 5 家業者，用三種方法排名，第一名各不相同。只有貝氏平均把「比例高、樣本也夠」的業者排到最前面。</p>
+      <p class="rail-note">就像餐廳評分：1 則評論 5.0 星，和 500 則評論 4.6 星，哪家比較可信？</p>
+    </aside>
+    <div class="stage">
+      <table class="raw" aria-label="示範業者原始數據">
+        <thead><tr><th>業者</th><th>申報件數</th><th>逾期件數</th><th>逾期率</th></tr></thead>
+        <tbody id="raw-body"></tbody>
+      </table>
+      <div class="methods" id="methods"></div>
+    </div>
+  </section>
+
+  <!-- 2-5 -->
+  <section class="slide" id="2-5" data-title="逾期申報：貝氏平均模擬">
+    <aside class="rail">
+      <p class="rail-code">2-5</p>
+      <p class="rail-chapter">分析篇・案例二</p>
+      <h2 class="rail-title">貝氏平均</h2>
+      <p class="rail-lead">樣本少，就向全體平均靠攏；樣本多，就回歸自己的表現。信心常數 m 決定「多少件才算夠」。</p>
+      <p class="rail-note">為了和主管討論 m 該設多少，我把它做成一個可以調參數的模擬工具。</p>
+    </aside>
+    <div class="stage stage-split">
+      <div class="stage-left">
+        <p class="formula" aria-label="w 等於 v 乘 r 加 m 乘 c，除以 v 加 m">
+          <span class="formula-w">w</span>
+          <span class="formula-eq">=</span>
+          <span class="formula-frac">
+            <span class="formula-num">v · r + m · c</span>
+            <span class="formula-den">v + m</span>
+          </span>
+        </p>
+        <dl class="vars">
+          <div><dt>w</dt><dd>貝氏平均逾期率</dd></div>
+          <div><dt>v</dt><dd>該業者的申報件數</dd></div>
+          <div><dt>r</dt><dd>該業者的逾期率</dd></div>
+          <div><dt>m</dt><dd>信心常數：樣本要多少才算可信</dd></div>
+          <div><dt>c</dt><dd>全體業者的平均逾期率</dd></div>
+        </dl>
+      </div>
+      <div class="stage-right">
+        <a class="preview" href="https://tpma1205.github.io/NTPC_SimBayes/" target="_blank" rel="noopener">
+          <img src="assets/simbayes-preview.png" alt="貝氏平均法模擬工具畫面" width="1280" height="800" />
+          <span class="preview-cta">開啟模擬工具<span class="ext" aria-hidden="true">↗</span></span>
+        </a>
+        <p class="caption">在新分頁開啟。可調整樣本數與 m，觀察排名如何變化。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-6 -->
+  <section class="slide" id="2-6" data-title="逾期申報：結果">
+    <aside class="rail">
+      <p class="rail-code">2-6</p>
+      <p class="rail-chapter">分析篇・案例二</p>
+      <h2 class="rail-title">結果</h2>
+      <p class="rail-lead">和主管用模擬工具討論過後，宣導名單改以貝氏平均逾期率排序。</p>
+    </aside>
+    <div class="stage">
+      <div class="outcome">
+        <p class="outcome-big">名單不再被大戶或一次性業者佔據。</p>
+        <div class="outcome-cols">
+          <div>
+            <h3>對宣導</h3>
+            <p>被請來的，是逾期比例高且申報量足夠的業者——宣導資源花在真正需要的人身上。</p>
+          </div>
+          <div>
+            <h3>對決策</h3>
+            <p>「經常」有了可以解釋的定義。主管看得懂公式，也能自己調 m 看結果。</p>
+          </div>
+          <div>
+            <h3>對之後</h3>
+            <p>同一套邏輯可以套到其他排名問題上，模擬工具還在線上。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha384-9nhczxUqK87bcKHh20fSQcTGD4qq5GhayNYSYWqwBkINBhOfQLg/P5HG5lF1urn4" crossorigin="anonymous"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

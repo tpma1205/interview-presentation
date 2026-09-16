@@ -1,0 +1,4 @@
+.scratch/
+.claude/
+node_modules/
+.playwright-mcp/
