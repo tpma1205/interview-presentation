@@ -26,13 +26,9 @@
       <span class="nav-chapter-name">分析篇</span>
       <a href="#2-1" data-nav="2-1">2-1</a>
       <a href="#2-2" data-nav="2-2">2-2</a>
-      <a href="#2-3" data-nav="2-3">2-3</a>
-      <a href="#2-4" data-nav="2-4">2-4</a>
-      <a href="#2-5" data-nav="2-5">2-5</a>
-      <a href="#2-6" data-nav="2-6">2-6</a>
     </div>
   </nav>
-  <div class="nav-progress" id="nav-progress" aria-live="polite">1 / 9</div>
+  <div class="nav-progress" id="nav-progress" aria-live="polite">1 / 5</div>
 </header>
 
 <main id="deck">
@@ -219,31 +215,26 @@
   </section>
 
   <!-- 2-1 -->
-  <section class="slide" id="2-1" data-title="逾期繳費：問題與數據">
+  <section class="slide" id="2-1" data-title="逾期繳費的難點及解決方案">
     <aside class="rail">
       <p class="rail-code">2-1</p>
       <p class="rail-chapter">分析篇・案例一</p>
-      <h2 class="rail-title">逾期繳費<br />問題與數據</h2>
-      <p class="rail-figure"><span class="num">3%</span><span class="rail-figure-label">案件逾期繳費</span></p>
-      <p class="rail-lead">繳款單開立後 14 天內要繳。把繳費日對開單日作圖，出現兩個峰：第 1 天，和第 14 天。</p>
-      <p class="rail-note">人只有兩種：當天做完的，和拖到最後一天的。</p>
-    </aside>
-    <div class="stage">
-      <div class="chart-wrap">
-        <canvas id="chart-before" aria-label="繳費時點分布（改善前）" role="img"></canvas>
-      </div>
-      <p class="caption">示意數據。分布形狀與比例依實際觀察：雙峰在第 1 與第 14 天，逾期 3%。</p>
-    </div>
-  </section>
-
-  <!-- 2-2 -->
-  <section class="slide" id="2-2" data-title="逾期繳費：解法與成果">
-    <aside class="rail">
-      <p class="rail-code">2-2</p>
-      <p class="rail-chapter">分析篇・案例一</p>
-      <h2 class="rail-title">逾期繳費<br />解法與成果</h2>
+      <h2 class="rail-title">逾期繳費的難點<br />及解決方案</h2>
       <p class="rail-figure rail-figure-pair"><span class="num">3%</span><span class="num-arrow">→</span><span class="num num-mint">0.2%</span></p>
-      <p class="rail-lead">拖到最後一天的人，只差一通電話。把「還剩 3 天」的案件每天挑出來，行政人員打電話提醒。</p>
+      <dl class="rail-dl">
+        <div>
+          <dt>逾期繳費的定義</dt>
+          <dd>繳款單開立後 14 天內未完成繳費的案件。</dd>
+        </div>
+        <div>
+          <dt>遇到的問題</dt>
+          <dd>約 3% 的案件逾期。把繳費日對開單日作圖，出現兩個峰：第 1 天和第 14 天——人分兩種，當天做完的，和拖到最後一天的；逾期多半來自後者。</dd>
+        </div>
+        <div>
+          <dt>解決方案</dt>
+          <dd>每天從資料庫匯出未繳案件到 Google Sheet，條件格式高亮剩餘 3 天以內的案件，行政人員電話提醒。逾期率降到 0.2%。</dd>
+        </div>
+      </dl>
     </aside>
     <div class="stage stage-split">
       <div class="stage-left">
@@ -254,6 +245,7 @@
         <div class="chart-wrap chart-wrap-sm">
           <canvas id="chart-after" aria-label="繳費時點分布（改善前後切換）" role="img"></canvas>
         </div>
+        <p class="caption">示意數據。分布形狀與比例依實際觀察：雙峰在第 1 與第 14 天，逾期 3% → 0.2%。</p>
       </div>
       <div class="stage-right">
         <ol class="steps-list">
@@ -276,18 +268,31 @@
     </div>
   </section>
 
-  <!-- 2-3 -->
-  <section class="slide" id="2-3" data-title="逾期申報：問題">
+  <!-- 2-2 -->
+  <section class="slide" id="2-2" data-title="逾期申報宣導對象問題">
     <aside class="rail">
-      <p class="rail-code">2-3</p>
+      <p class="rail-code">2-2</p>
       <p class="rail-chapter">分析篇・案例二</p>
-      <h2 class="rail-title">逾期申報宣導<br />先定義「經常」</h2>
-      <p class="rail-lead">每年的宣導會，這一次要鎖定「經常逾期申報」的業者。名單怎麼排，決定誰會被請來、宣導資源花在誰身上。</p>
+      <h2 class="rail-title">逾期申報<br />宣導對象問題</h2>
+      <dl class="rail-dl">
+        <div>
+          <dt>逾期申報的定義</dt>
+          <dd>營建工程應在規定期限內於平台完成空污費申報；超過期限才申報的案件，即為逾期申報。</dd>
+        </div>
+        <div>
+          <dt>遇到的問題</dt>
+          <dd>年度宣導會要鎖定「經常逾期申報」的業者，但「經常」沒有定義：算總次數，大戶永遠排前面；算平均逾期率，只申報過 2 件的業者又會被放大。</dd>
+        </div>
+        <div>
+          <dt>解決方案</dt>
+          <dd>改用貝氏平均逾期率排序：樣本少的向全體平均靠攏，樣本多的回歸自己的表現。為了和主管討論信心常數 m 該設多少，我把它做成可調參數的模擬工具；討論後確定採用，名單不再被大戶或一次性業者佔據。</dd>
+        </div>
+      </dl>
     </aside>
-    <div class="stage">
-      <div class="question">
-        <p class="question-big">「經常」<span>是幾次？還是幾成？</span></p>
-        <div class="question-cols">
+    <div class="stage stage-stack">
+      <div class="define">
+        <p class="define-big">「經常」<span>是幾次？還是幾成？</span></p>
+        <div class="define-cols">
           <div>
             <h3>如果算次數</h3>
             <p>申報幾百件的大戶，逾期次數一定最多——但他的逾期比例可能很低。</p>
@@ -298,92 +303,28 @@
           </div>
           <div>
             <h3>真正要找的</h3>
-            <p>逾期比例高、而且申報量足以證明這不是偶然的業者。</p>
+            <p>逾期比例高、而且申報量足以證明這不是偶然的業者。就像餐廳評分：1 則 5.0 星，和 500 則 4.6 星，哪家可信？</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 2-4 -->
-  <section class="slide" id="2-4" data-title="逾期申報：方法演進">
-    <aside class="rail">
-      <p class="rail-code">2-4</p>
-      <p class="rail-chapter">分析篇・案例二</p>
-      <h2 class="rail-title">三種定義<br />三個第一名</h2>
-      <p class="rail-lead">同一組 5 家業者，用三種方法排名，第一名各不相同。只有貝氏平均把「比例高、樣本也夠」的業者排到最前面。</p>
-      <p class="rail-note">就像餐廳評分：1 則評論 5.0 星，和 500 則評論 4.6 星，哪家比較可信？</p>
-    </aside>
-    <div class="stage">
-      <table class="raw" aria-label="示範業者原始數據">
-        <thead><tr><th>業者</th><th>申報件數</th><th>逾期件數</th><th>逾期率</th></tr></thead>
-        <tbody id="raw-body"></tbody>
-      </table>
-      <div class="methods" id="methods"></div>
-    </div>
-  </section>
-
-  <!-- 2-5 -->
-  <section class="slide" id="2-5" data-title="逾期申報：貝氏平均模擬">
-    <aside class="rail">
-      <p class="rail-code">2-5</p>
-      <p class="rail-chapter">分析篇・案例二</p>
-      <h2 class="rail-title">貝氏平均</h2>
-      <p class="rail-lead">樣本少，就向全體平均靠攏；樣本多，就回歸自己的表現。信心常數 m 決定「多少件才算夠」。</p>
-      <p class="rail-note">為了和主管討論 m 該設多少，我把它做成一個可以調參數的模擬工具。</p>
-    </aside>
-    <div class="stage stage-split">
-      <div class="stage-left">
-        <p class="formula" aria-label="w 等於 v 乘 r 加 m 乘 c，除以 v 加 m">
-          <span class="formula-w">w</span>
-          <span class="formula-eq">=</span>
-          <span class="formula-frac">
-            <span class="formula-num">v · r + m · c</span>
-            <span class="formula-den">v + m</span>
-          </span>
-        </p>
-        <dl class="vars">
-          <div><dt>w</dt><dd>貝氏平均逾期率</dd></div>
-          <div><dt>v</dt><dd>該業者的申報件數</dd></div>
-          <div><dt>r</dt><dd>該業者的逾期率</dd></div>
-          <div><dt>m</dt><dd>信心常數：樣本要多少才算可信</dd></div>
-          <div><dt>c</dt><dd>全體業者的平均逾期率</dd></div>
-        </dl>
-      </div>
-      <div class="stage-right">
-        <a class="preview" href="https://tpma1205.github.io/NTPC_SimBayes/" target="_blank" rel="noopener">
-          <img src="assets/simbayes-preview.png" alt="貝氏平均法模擬工具畫面" width="1280" height="800" />
-          <span class="preview-cta">開啟模擬工具<span class="ext" aria-hidden="true">↗</span></span>
-        </a>
-        <p class="caption">在新分頁開啟。可調整樣本數與 m，觀察排名如何變化。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2-6 -->
-  <section class="slide" id="2-6" data-title="逾期申報：結果">
-    <aside class="rail">
-      <p class="rail-code">2-6</p>
-      <p class="rail-chapter">分析篇・案例二</p>
-      <h2 class="rail-title">結果</h2>
-      <p class="rail-lead">和主管用模擬工具討論過後，宣導名單改以貝氏平均逾期率排序。</p>
-    </aside>
-    <div class="stage">
-      <div class="outcome">
-        <p class="outcome-big">名單不再被大戶或一次性業者佔據。</p>
-        <div class="outcome-cols">
-          <div>
-            <h3>對宣導</h3>
-            <p>被請來的，是逾期比例高且申報量足夠的業者——宣導資源花在真正需要的人身上。</p>
-          </div>
-          <div>
-            <h3>對決策</h3>
-            <p>「經常」有了可以解釋的定義。主管看得懂公式，也能自己調 m 看結果。</p>
-          </div>
-          <div>
-            <h3>對之後</h3>
-            <p>同一套邏輯可以套到其他排名問題上，模擬工具還在線上。</p>
-          </div>
+      <div class="compare">
+        <div class="methods" id="methods"></div>
+        <div class="tool">
+          <p class="formula" aria-label="w 等於 v 乘 r 加 m 乘 c，除以 v 加 m">
+            <span class="formula-w">w</span>
+            <span class="formula-eq">=</span>
+            <span class="formula-frac">
+              <span class="formula-num">v · r + m · c</span>
+              <span class="formula-den">v + m</span>
+            </span>
+          </p>
+          <p class="tool-vars"><b>v</b> 申報件數　<b>r</b> 逾期率　<b>m</b> 信心常數　<b>c</b> 全體平均逾期率</p>
+          <p class="tool-note">m 決定「多少件才算可信」。範例用 m = 20。</p>
+          <a class="preview" href="https://tpma1205.github.io/NTPC_SimBayes/" target="_blank" rel="noopener">
+            <img src="assets/simbayes-preview.png" alt="貝氏平均法模擬工具畫面" width="1280" height="800" />
+            <span class="preview-cta">開啟模擬工具<span class="ext" aria-hidden="true">↗</span></span>
+          </a>
+          <p class="caption">在新分頁開啟，可調整樣本數與 m。</p>
         </div>
       </div>
     </div>

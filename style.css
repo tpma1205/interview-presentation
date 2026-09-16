@@ -44,7 +44,7 @@ h1, h2, h3, p, dl, dd, ol, ul { margin: 0; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
 
-.num, .rail-code, .nav a, .nav-progress, .steps-n, .formula, .vars dt, .sheet td, .raw td, .rank-score {
+.num, .rail-code, .nav a, .nav-progress, .steps-n, .formula, .sheet td, .rank-score {
   font-family: var(--font-latin);
   font-variant-numeric: tabular-nums;
 }
@@ -200,6 +200,25 @@ button { font: inherit; color: inherit; }
 .rail-figure .num-arrow {
   font-size: 32px;
   color: var(--slate);
+}
+
+.rail-dl {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.rail-dl dt {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal-deep);
+  margin-bottom: 2px;
+}
+
+.rail-dl dd {
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .rail-figure-label {
@@ -463,13 +482,13 @@ button { font: inherit; color: inherit; }
   font-size: 14px;
 }
 
-.sheet, .raw {
+.sheet {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
 
-.sheet th, .raw th {
+.sheet th {
   text-align: left;
   font-weight: 500;
   color: var(--slate);
@@ -478,7 +497,7 @@ button { font: inherit; color: inherit; }
   background: var(--mist);
 }
 
-.sheet td, .raw td {
+.sheet td {
   padding: 6px 10px;
   border-bottom: 1px solid var(--line);
 }
@@ -486,50 +505,75 @@ button { font: inherit; color: inherit; }
 .sheet td.due { color: var(--rust); font-weight: 600; }
 .sheet tr:has(.due) td { background: var(--rust-tint); }
 
-/* ---------- 2-3 question ---------- */
-.question { display: flex; flex-direction: column; gap: 36px; }
+/* ---------- 2-2 define + compare ---------- */
+.stage-stack { justify-content: center; gap: 28px; }
 
-.question-big {
-  font-size: 56px;
+.define {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.define-big {
+  font-size: 34px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
-.question-big span {
+.define-big span {
   display: block;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--slate);
   margin-top: 6px;
 }
 
-.question-cols, .outcome-cols {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-
-.question-cols h3, .outcome-cols h3 {
-  font-size: 20px;
-  font-weight: 700;
-  padding-top: 12px;
-  border-top: 2px solid var(--ink);
-  margin-bottom: 8px;
-}
-
-.question-cols p, .outcome-cols p { font-size: 17px; line-height: 1.8; }
-.question-cols > :last-child h3 { border-top-color: var(--teal); color: var(--teal-deep); }
-
-/* ---------- 2-4 methods ---------- */
-.raw { max-width: 560px; }
-.raw td:not(:first-child), .raw th:not(:first-child) { text-align: right; }
-
-.methods {
+.define-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 8px;
+}
+
+.define-cols h3 {
+  font-size: 17px;
+  font-weight: 700;
+  padding-top: 8px;
+  border-top: 2px solid var(--ink);
+  margin-bottom: 6px;
+}
+
+.define-cols > :last-child h3 { border-top-color: var(--teal); color: var(--teal-deep); }
+.define-cols p { font-size: 14px; line-height: 1.7; }
+
+.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(280px, 1.1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+}
+
+.tool .formula { font-size: 26px; padding: 4px 0 8px; gap: 14px; white-space: nowrap; }
+.tool-vars { font-size: 14px; color: var(--slate); }
+.tool-vars b { font-family: var(--font-latin); font-style: italic; color: var(--teal-deep); }
+.tool-note { font-size: 14px; }
+
+/* ---------- 2-4 methods ---------- */
+.methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .method {
@@ -556,17 +600,20 @@ button { font: inherit; color: inherit; }
 .rank li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 5px 8px;
+  gap: 8px;
+  padding: 4px 8px;
   border-radius: 4px;
   font-size: 14px;
 }
+
+.rank-meta { font-size: 12px; color: var(--slate); font-weight: 400; }
+.method.is-chosen .rank li:first-child .rank-meta { color: rgba(255,255,255,0.8); }
 
 .rank li:first-child { background: var(--mist-2); font-weight: 600; }
 .method.is-chosen .rank li:first-child { background: var(--teal); color: #fff; }
 .rank-pos { color: var(--slate); width: 1.2em; font-family: var(--font-latin); }
 .method.is-chosen .rank li:first-child .rank-pos { color: rgba(255,255,255,0.8); }
-.rank-name { flex: 1; }
+.rank-name { flex: 1; display: flex; flex-direction: column; line-height: 1.3; }
 .method-flaw { font-size: 14px; color: var(--slate); line-height: 1.6; }
 .method.is-chosen .method-flaw { color: var(--ink); }
 
@@ -575,6 +622,7 @@ button { font: inherit; color: inherit; }
   display: flex;
   align-items: center;
   gap: 20px;
+  white-space: nowrap;
   font-size: 40px;
   font-weight: 500;
   font-style: italic;
@@ -585,11 +633,6 @@ button { font: inherit; color: inherit; }
 .formula-frac { display: inline-flex; flex-direction: column; align-items: center; }
 .formula-num { padding: 0 12px 6px; border-bottom: 2px solid var(--ink); }
 .formula-den { padding: 6px 12px 0; }
-
-.vars { display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
-.vars > div { display: flex; gap: 16px; align-items: baseline; }
-.vars dt { width: 1.5em; font-style: italic; font-weight: 600; color: var(--teal-deep); font-size: 17px; }
-.vars dd { color: var(--ink); }
 
 .preview {
   display: block;
@@ -619,16 +662,6 @@ button { font: inherit; color: inherit; }
 
 .preview:hover .preview-cta { background: var(--teal); }
 .ext { font-family: var(--font-latin); }
-
-/* ---------- 2-6 outcome ---------- */
-.outcome { display: flex; flex-direction: column; gap: 40px; }
-
-.outcome-big {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.3;
-  max-width: 18em;
-}
 
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -678,11 +711,13 @@ button { font: inherit; color: inherit; }
   .org-fn { min-height: 0; }
   .role { min-height: 0; }
 
-  .question-cols, .outcome-cols, .methods { grid-template-columns: 1fr; gap: 20px; }
-  .question-big { font-size: 40px; }
-  .question-big span { font-size: 22px; }
-  .outcome-big { font-size: 28px; }
-  .formula { font-size: 30px; }
+  .methods, .define-cols { grid-template-columns: 1fr; gap: 20px; }
+  .define { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .tool { padding-left: 0; border-left: 0; padding-top: 20px; border-top: 1px solid var(--line); }
+  .define-big { font-size: 32px; }
+  .define-big span { font-size: 18px; }
+  .tool .formula { font-size: 24px; }
 }
 
 @media (max-width: 560px) {

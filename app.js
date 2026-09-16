@@ -34,7 +34,6 @@ const observer = new IntersectionObserver(
   },
   { threshold: [0.5, 0.75] },
 );
-slides.forEach((s) => observer.observe(s));
 
 function goTo(index) {
   const next = Math.min(Math.max(index, 0), slides.length - 1);
@@ -49,9 +48,10 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
 });
 
-// initial position from hash
+// 先跳到 hash 指定的節，再開始追蹤，避免載入瞬間被 1-1 蓋掉 hash
 const initial = slides.findIndex((s) => `#${s.id}` === location.hash);
-if (initial > 0) requestAnimationFrame(() => slides[initial].scrollIntoView({ behavior: 'auto' }));
+if (initial > 0) slides[initial].scrollIntoView({ behavior: 'auto' });
+requestAnimationFrame(() => slides.forEach((s) => observer.observe(s)));
 
 /* ---------- payment timing chart ---------- */
 const labels = before.map((_, i) => i + 1);
@@ -139,7 +139,6 @@ function makeChart(canvasId, dist) {
   });
 }
 
-makeChart('chart-before', before);
 const toggleChart = makeChart('chart-after', before);
 
 document.querySelectorAll('.toggle-btn').forEach((btn) => {
@@ -155,13 +154,6 @@ document.querySelectorAll('.toggle-btn').forEach((btn) => {
 /* ---------- 2-4 method comparison ---------- */
 const pct = (x) => `${(x * 100).toFixed(1)}%`;
 const c = overallLateRate(contractors);
-
-const rawBody = document.getElementById('raw-body');
-if (rawBody) {
-  rawBody.innerHTML = contractors
-    .map((x) => `<tr><td>${x.name}</td><td>${x.filings}</td><td>${x.late}</td><td>${pct(x.late / x.filings)}</td></tr>`)
-    .join('');
-}
 
 const methods = [
   {
@@ -199,7 +191,7 @@ if (methodsEl) {
         <ol class="rank">
           ${m.rows
             .map(
-              (r, i) => `<li><span class="rank-pos">${i + 1}</span><span class="rank-name">${r.name}</span><span class="rank-score">${m.fmt(r.score)}</span></li>`,
+              (r, i) => `<li><span class="rank-pos">${i + 1}</span><span class="rank-name"><span>${r.name}</span><span class="rank-meta">${r.filings} 件中逾期 ${r.late}</span></span><span class="rank-score">${m.fmt(r.score)}</span></li>`,
             )
             .join('')}
         </ol>
