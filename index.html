@@ -44,50 +44,57 @@
       <p class="rail-chapter">專案篇</p>
       <h2 class="rail-title">新北市營建工程<br />空污費徵收</h2>
       <p class="rail-lead">新北市 29 個行政區內的營建工程，都要繳空氣污染防制費。前公司建置線上申報平台，業者在上面申報，政府在上面審查、開單、收費、對帳。</p>
-      <p class="rail-note">四條泳道：誰做哪一步。</p>
+      <p class="rail-note">整個流程都在申報平台上運行。四條泳道：誰做哪一步。</p>
     </aside>
     <div class="stage">
       <div class="scroll-x">
-        <svg class="swimlane" viewBox="0 0 1070 480" role="img" aria-labelledby="swim-title">
+        <svg class="swimlane" viewBox="0 0 1090 540" role="img" aria-labelledby="swim-title">
           <title id="swim-title">申報平台流程泳道圖</title>
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" class="arrow-head" />
             </marker>
           </defs>
-          <g class="lanes">
-            <rect x="0" y="0" width="1070" height="120" class="lane lane-alt" />
-            <rect x="0" y="120" width="1070" height="120" class="lane" />
-            <rect x="0" y="240" width="1070" height="120" class="lane lane-alt" />
-            <rect x="0" y="360" width="1070" height="120" class="lane" />
-            <line x1="100" y1="0" x2="100" y2="480" class="lane-divider" />
-            <text x="20" y="66" class="lane-label">業者</text>
-            <text x="20" y="186" class="lane-label lane-label-team">執行團隊</text>
-            <text x="20" y="306" class="lane-label">政府</text>
-            <text x="20" y="426" class="lane-label">系統</text>
-          </g>
-          <g class="edges" fill="none" marker-end="url(#arrow)">
-            <path d="M220 60 H228 V180 H236" />
-            <path d="M340 180 H348 V300 H356" />
-            <path d="M460 300 H476" />
-            <path d="M580 300 H588 V420 H596" />
-            <path d="M700 420 H704 V60 H708" />
-            <path d="M828 60 H832 V420 H836" />
-            <path d="M940 420 H956" />
-          </g>
-          <g class="steps">
-            <g transform="translate(116 36)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">申報</text></g>
-            <g transform="translate(236 156)"><rect width="104" height="48" rx="6" class="step step-team" /><text x="52" y="30" class="step-text">一審</text></g>
-            <g transform="translate(356 276)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">二審</text></g>
-            <g transform="translate(476 276)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">三審</text></g>
-            <g transform="translate(596 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">開立繳款單</text></g>
-            <g transform="translate(708 36)"><rect width="120" height="48" rx="6" class="step" /><text x="60" y="21" class="step-text">繳費</text><text x="60" y="39" class="step-sub">下載繳款單 / 行動支付</text></g>
-            <g transform="translate(836 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">台灣銀行對帳</text></g>
-            <g transform="translate(956 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">開放繳費憑證</text></g>
+          <!-- 平台外框 -->
+          <rect x="1" y="1" width="1088" height="538" rx="10" class="platform" />
+          <path d="M11 1 H1079 a10 10 0 0 1 10 10 V49 H1 V11 a10 10 0 0 1 10 -10 Z" class="platform-head" />
+          <text x="24" y="32" class="platform-title">申報平台</text>
+          <text x="1066" y="32" class="platform-sub">業者、執行團隊、政府都在同一個系統上作業</text>
+          <g transform="translate(10 50)">
+            <g class="lanes">
+              <rect x="0" y="0" width="1070" height="120" class="lane lane-alt" />
+              <rect x="0" y="120" width="1070" height="120" class="lane" />
+              <rect x="0" y="240" width="1070" height="120" class="lane lane-alt" />
+              <rect x="0" y="360" width="1070" height="120" class="lane" />
+              <line x1="100" y1="0" x2="100" y2="480" class="lane-divider" />
+              <text x="20" y="66" class="lane-label">業者</text>
+              <text x="20" y="186" class="lane-label lane-label-team">執行團隊</text>
+              <text x="20" y="306" class="lane-label">政府</text>
+              <text x="20" y="418" class="lane-label lane-label-sys">系統自動</text>
+            </g>
+            <g class="edges" fill="none" marker-end="url(#arrow)">
+              <path d="M220 60 H228 V180 H236" />
+              <path d="M340 180 H348 V300 H356" />
+              <path d="M460 300 H476" />
+              <path d="M580 300 H588 V420 H596" />
+              <path d="M700 420 H704 V60 H708" />
+              <path d="M828 60 H832 V420 H836" />
+              <path d="M940 420 H956" />
+            </g>
+            <g class="steps">
+              <g transform="translate(116 36)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">申報</text></g>
+              <g transform="translate(236 156)"><rect width="104" height="48" rx="6" class="step step-team" /><text x="52" y="30" class="step-text">一審</text></g>
+              <g transform="translate(356 276)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">二審</text></g>
+              <g transform="translate(476 276)"><rect width="104" height="48" rx="6" class="step" /><text x="52" y="30" class="step-text">三審</text></g>
+              <g transform="translate(596 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">開立繳款單</text></g>
+              <g transform="translate(708 36)"><rect width="120" height="48" rx="6" class="step" /><text x="60" y="21" class="step-text">繳費</text><text x="60" y="39" class="step-sub">下載繳款單 / 行動支付</text></g>
+              <g transform="translate(836 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">台灣銀行對帳</text></g>
+              <g transform="translate(956 396)"><rect width="104" height="48" rx="6" class="step step-sys" /><text x="52" y="30" class="step-text">開放繳費憑證</text></g>
+            </g>
           </g>
         </svg>
       </div>
-      <p class="legend"><span class="legend-team">實心</span>＝執行團隊　<span class="legend-sys">虛線</span>＝系統自動　實線＝人工</p>
+      <p class="legend"><span class="legend-team">實心</span>＝執行團隊　<span class="legend-sys">虛線</span>＝系統自動，不經人手</p>
     </div>
   </section>
 
@@ -98,40 +105,49 @@
       <p class="rail-chapter">專案篇</p>
       <h2 class="rail-title">團隊組織</h2>
       <p class="rail-lead">我帶領 4 位行政客服人員。四項職能由四人共同分攤，不各自專責——每個人都能接電話、審案、催繳。</p>
+      <p class="rail-note">我負責方向、SOP 與 KPI；團隊負責第一線的諮詢、審查與催繳。</p>
     </aside>
     <div class="stage">
-      <div class="team">
-        <div class="team-manage">
-          <span class="team-manage-label">我的管理職責</span>
-          <span>訂定年度執行方向</span>
-          <span>制定 SOP</span>
-          <span>制定 KPI</span>
+      <div class="org">
+        <div class="org-node org-lead">
+          <p class="org-role">我 ｜ 專案負責人</p>
+          <ul class="org-chips">
+            <li>訂定年度執行方向</li>
+            <li>制定 SOP</li>
+            <li>制定 KPI</li>
+          </ul>
         </div>
-        <div class="team-grid">
-          <div class="team-fn">
+        <div class="org-link" aria-hidden="true"></div>
+        <div class="org-node org-staff">
+          <svg class="org-people" viewBox="0 0 176 40" aria-hidden="true">
+            <g class="person" transform="translate(0 0)"><circle cx="20" cy="11" r="9"/><path d="M4 40 C4 26 36 26 36 40 Z"/></g>
+            <g class="person" transform="translate(44 0)"><circle cx="20" cy="11" r="9"/><path d="M4 40 C4 26 36 26 36 40 Z"/></g>
+            <g class="person" transform="translate(88 0)"><circle cx="20" cy="11" r="9"/><path d="M4 40 C4 26 36 26 36 40 Z"/></g>
+            <g class="person" transform="translate(132 0)"><circle cx="20" cy="11" r="9"/><path d="M4 40 C4 26 36 26 36 40 Z"/></g>
+          </svg>
+          <p class="org-role">4 位行政客服人員</p>
+          <p class="org-note">四項職能共同分攤，不各自專責</p>
+        </div>
+        <div class="org-branches">
+          <div class="org-fn">
             <h3>申報諮詢</h3>
-            <p>業者申報前後的電話與現場諮詢。</p>
-            <p class="team-map">對應流程：申報</p>
+            <p>業者申報前後的電話與現場諮詢，協助補件。</p>
+            <p class="org-map">流程：申報</p>
           </div>
-          <div class="team-fn">
-            <h3>一審</h3>
-            <p>申報資料的第一輪審查，補件退件。</p>
-            <p class="team-map">對應流程：一審</p>
+          <div class="org-fn">
+            <h3>申報審查</h3>
+            <p>一審：檢核申報資料，退件或送政府二審。</p>
+            <p class="org-map">流程：一審</p>
           </div>
-          <div class="team-core">
-            <p class="team-core-name">執行團隊</p>
-            <p class="team-core-size"><span class="num">1</span> + <span class="num">4</span></p>
-            <p class="team-core-note">我 + 4 位行政客服<br />四項職能共同分攤</p>
-          </div>
-          <div class="team-fn">
+          <div class="org-fn">
             <h3>繳費催帳</h3>
-            <p>即將到期與逾期案件的提醒與追蹤。</p>
-            <p class="team-map">對應流程：繳費</p>
+            <p>即將到期與逾期案件的提醒、追蹤與紀錄。</p>
+            <p class="org-map">流程：繳費</p>
           </div>
-          <div class="team-fn">
+          <div class="org-fn">
             <h3>日常行政</h3>
-            <p>公文、報表、會議與資料整理。</p>
-            <p class="team-map">對應流程：全程</p>
+            <p>公文、報表、會議紀錄與資料整理。</p>
+            <p class="org-map">流程：全程</p>
           </div>
         </div>
       </div>
@@ -150,27 +166,53 @@
       <div class="roles">
         <div class="role">
           <h3>專案管理</h3>
-          <p>參與評選得標；執行合約項目並在期程內完成；撰寫報告書、參與審查會議；完成驗收。</p>
+          <ul>
+            <li>參與評選簡報並得標</li>
+            <li>依合約項目排定年度期程，在期限內完成</li>
+            <li>撰寫期中、期末報告書，出席審查會議</li>
+            <li>完成驗收</li>
+          </ul>
         </div>
         <div class="role">
           <h3>維運申報平台</h3>
-          <p>與業者、政府討論需求；與資訊部門討論開發內容與排程。</p>
+          <ul>
+            <li>蒐集業者與政府端的使用需求與問題</li>
+            <li>整理成需求說明，與資訊部門討論開發</li>
+            <li>排定功能優先順序，驗證上線結果</li>
+          </ul>
         </div>
         <div class="role">
           <h3>資料庫管理</h3>
-          <p>資料清洗、補遺、正規化；數據分析、提供決策依據；報表製作、議員索資。</p>
+          <ul>
+            <li>資料清洗、補遺、正規化</li>
+            <li>數據分析，提供決策依據</li>
+            <li>製作定期報表</li>
+            <li>回應議員索資</li>
+          </ul>
         </div>
         <div class="role">
           <h3>法律諮詢</h3>
-          <p>遇到特殊案例時，整理相關法規、解釋函、判決書，協助政府單位判斷。</p>
+          <ul>
+            <li>遇特殊案例時，整理相關法規、解釋函、判決書</li>
+            <li>提出處理建議，協助政府單位判斷</li>
+            <li>回覆業者對法規適用的疑義</li>
+          </ul>
         </div>
         <div class="role">
           <h3>宣導會議</h3>
-          <p>每年辦理 3 場、每場約 200 人；擔任授課講者。</p>
+          <ul>
+            <li>每年辦理 3 場，每場約 200 人</li>
+            <li>規劃議程與教材</li>
+            <li>擔任授課講者</li>
+          </ul>
         </div>
         <div class="role">
           <h3>管理團隊</h3>
-          <p>訂定年度執行方向；制定 SOP；制定 KPI。</p>
+          <ul>
+            <li>訂定年度執行方向</li>
+            <li>制定 SOP，統一作業標準</li>
+            <li>制定 KPI，追蹤達成情形</li>
+          </ul>
         </div>
       </div>
     </div>
